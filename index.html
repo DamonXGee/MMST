@@ -2,21 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <title>MMST – Mokopane Maths And Science Tutors</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
     <div class="header-content">
-      <div class="logo"><span>MMST</span> Mokopane Maths & Science Tutors</div>
+      <div class="logo"><span>MMST</span></div>
       <nav>
         <button class="active" data-section="home">Home</button>
         <button data-section="papers">Papers</button>
         <button data-section="notes">Notes</button>
         <button data-section="practice">Practice</button>
         <button data-section="formulas">Formulas</button>
-        <button data-section="flashcards">Flashcards</button>
+        <button data-section="flashcards">Cards</button>
         <button data-section="progress">Progress</button>
         <button data-section="classes">Classes</button>
         <button data-section="about">About</button>
@@ -29,39 +29,62 @@
     <!-- HOME -->
     <section id="home" class="section active">
       <div class="home-hero">
-        <h1>Welcome to MMST</h1>
-        <p>Helping Mokopane learners excel in Mathematics, Physical Sciences, Life Sciences and Geography (Grades 8–12)</p>
+        <h1>MMST</h1>
+        <p class="tagline">Mokopane Maths & Science Tutors</p>
+        <p>Helping Grade 8–12 learners master Mathematics, Physical Sciences, Life Sciences & Geography</p>
         <div class="stats">
-          <div class="stat"><span id="paperCount">0</span> Papers</div>
-          <div class="stat"><span id="noteCount">0</span> Notes</div>
-          <div class="stat"><span id="quizCount">0</span> Quizzes</div>
+          <div class="stat"><span id="paperCount">0</span><small>Papers</small></div>
+          <div class="stat"><span id="noteCount">0</span><small>Notes</small></div>
+          <div class="stat"><span id="quizCount">0</span><small>Quizzes</small></div>
         </div>
       </div>
-      <div class="grid">
-        <div class="card" onclick="showSection('papers')"><h3>Question Papers</h3><p>Past papers and memos by subject</p><span class="badge badge-grade">Updated</span></div>
-        <div class="card" onclick="showSection('notes')"><h3>Study Notes</h3><p>Detailed notes with worked examples</p><span class="badge badge-grade">Full Examples</span></div>
-        <div class="card" onclick="showSection('practice')"><h3>Interactive Practice</h3><p>Quizzes with instant feedback</p><span class="badge badge-quiz">Practice</span></div>
-        <div class="card" onclick="showSection('formulas')"><h3>Formula Sheet</h3><p>Quick reference for exams</p><span class="badge badge-note">Essential</span></div>
-        <div class="card" onclick="showSection('flashcards')"><h3>Flashcards</h3><p>Test your memory</p><span class="badge badge-quiz">New</span></div>
-        <div class="card" onclick="showSection('progress')"><h3>My Progress</h3><p>Track what you’ve completed</p><span class="badge badge-done">Track</span></div>
-        <div class="card">
-          <h3>Need Help?</h3>
-          <p>Message us on WhatsApp</p>
-          <a href="https://wa.me/27793401582" class="btn btn-accent" target="_blank" style="margin-top:.7rem" onclick="event.stopPropagation()">Chat on WhatsApp</a>
+      <div class="grid home-grid">
+        <div class="card feature-card" onclick="showSection('papers')">
+          <div class="card-icon">📄</div>
+          <h3>Question Papers</h3>
+          <p>Past papers & memos</p>
         </div>
+        <div class="card feature-card" onclick="showSection('notes')">
+          <div class="card-icon">📘</div>
+          <h3>Study Notes</h3>
+          <p>With worked examples</p>
+        </div>
+        <div class="card feature-card" onclick="showSection('practice')">
+          <div class="card-icon">🎯</div>
+          <h3>Practice</h3>
+          <p>Quizzes & topic tests</p>
+        </div>
+        <div class="card feature-card" onclick="showSection('formulas')">
+          <div class="card-icon">📐</div>
+          <h3>Formulas</h3>
+          <p>Quick exam reference</p>
+        </div>
+        <div class="card feature-card" onclick="showSection('flashcards')">
+          <div class="card-icon">🃏</div>
+          <h3>Flashcards</h3>
+          <p>Test your memory</p>
+        </div>
+        <div class="card feature-card" onclick="showSection('progress')">
+          <div class="card-icon">📊</div>
+          <h3>Progress</h3>
+          <p>Track your work</p>
+        </div>
+      </div>
+      <div class="home-cta">
+        <a href="https://wa.me/27793401582" class="btn btn-accent" target="_blank">Chat on WhatsApp</a>
       </div>
     </section>
 
     <!-- PAPERS -->
     <section id="papers" class="section">
       <h1>Question Papers</h1>
-      <p class="subtitle">Search or choose a subject.</p>
+      <p class="subtitle">Search or filter by subject</p>
       <div class="search-box"><input type="text" id="paperSearch" placeholder="Search papers..."></div>
       <div class="subject-tabs" id="subjectTabs">
         <button class="active" data-subject="All">All</button>
-        <button data-subject="Mathematics">Mathematics</button>
-        <button data-subject="Physical Sciences">Physical Sciences</button>
-        <button data-subject="Life Sciences">Life Sciences</button>
+        <button data-subject="Mathematics">Maths</button>
+        <button data-subject="Physical Sciences">Physics</button>
+        <button data-subject="Life Sciences">Life Sci</button>
         <button data-subject="Geography">Geography</button>
       </div>
       <div class="grid" id="papersGrid"></div>
@@ -70,17 +93,18 @@
     <!-- NOTES -->
     <section id="notes" class="section">
       <h1>Study Notes</h1>
-      <p class="subtitle">Choose a subject and tap a note to study.</p>
+      <p class="subtitle">Search or choose a subject</p>
+      <div class="search-box"><input type="text" id="noteSearch" placeholder="Search notes..."></div>
       <div class="subject-tabs" id="noteTabs">
         <button class="active" data-subject="All">All</button>
-        <button data-subject="Mathematics">Mathematics</button>
-        <button data-subject="Physical Sciences">Physical Sciences</button>
-        <button data-subject="Life Sciences">Life Sciences</button>
+        <button data-subject="Mathematics">Maths</button>
+        <button data-subject="Physical Sciences">Physics</button>
+        <button data-subject="Life Sciences">Life Sci</button>
         <button data-subject="Geography">Geography</button>
       </div>
       <div class="grid" id="notesGrid"></div>
       <div class="note-detail" id="noteDetail">
-        <button class="back-btn" onclick="closeNote()">← Back to Notes</button>
+        <button class="back-btn" onclick="closeNote()">← Back</button>
         <h2 id="noteTitle"></h2>
         <div class="meta" id="noteMeta"></div>
         <div class="note-content" id="noteContent"></div>
@@ -89,88 +113,72 @@
 
     <!-- PRACTICE -->
     <section id="practice" class="section">
-      <h1>Interactive Practice</h1>
-      <p class="subtitle">Test yourself with quizzes.</p>
+      <h1>Practice</h1>
+      <p class="subtitle">Quizzes and topic practice</p>
       <div class="subject-tabs" id="quizTabs">
         <button class="active" data-subject="All">All</button>
-        <button data-subject="Mathematics">Mathematics</button>
-        <button data-subject="Physical Sciences">Physical Sciences</button>
-        <button data-subject="Life Sciences">Life Sciences</button>
+        <button data-subject="Mathematics">Maths</button>
+        <button data-subject="Physical Sciences">Physics</button>
+        <button data-subject="Life Sciences">Life Sci</button>
         <button data-subject="Geography">Geography</button>
       </div>
       <div class="grid" id="quizGrid"></div>
       <div class="quiz-detail" id="quizDetail">
-        <button class="back-btn" onclick="closeQuiz()">← Back to Quizzes</button>
+        <button class="back-btn" onclick="closeQuiz()">← Back</button>
         <h2 id="quizTitle"></h2>
         <div id="quizBody"></div>
       </div>
     </section>
 
-    <!-- FORMULA SHEET -->
+    <!-- FORMULAS -->
     <section id="formulas" class="section">
       <h1>Formula Sheet</h1>
-      <p class="subtitle">Quick reference for exams.</p>
+      <p class="subtitle">Quick reference</p>
       <div class="subject-tabs" id="formulaTabs">
         <button class="active" data-formula="math">Mathematics</button>
         <button data-formula="physics">Physical Sciences</button>
       </div>
       <div id="mathFormulas" class="formula-section">
         <div class="card"><h3>Functions</h3>
-          <div class="formula">Linear: y = mx + c</div>
-          <div class="formula">Quadratic: y = ax² + bx + c</div>
-          <div class="formula">Turning point: x = −b / (2a)</div>
-          <div class="formula">Exponential: y = abˣ</div>
-          <div class="formula">Hyperbola: y = a/x + q</div>
+          <div class="formula">y = mx + c</div>
+          <div class="formula">y = ax² + bx + c</div>
+          <div class="formula">x = −b/(2a)</div>
+          <div class="formula">y = abˣ</div>
         </div>
         <div class="card"><h3>Differentiation</h3>
-          <div class="formula">d/dx [xⁿ] = n xⁿ⁻¹</div>
-          <div class="formula">Product rule: (uv)′ = u′v + uv′</div>
-          <div class="formula">Quotient rule: (u/v)′ = (u′v − uv′) / v²</div>
-          <div class="formula">Stationary points: set dy/dx = 0</div>
+          <div class="formula">d/dx [xⁿ] = nxⁿ⁻¹</div>
+          <div class="formula">(uv)′ = u′v + uv′</div>
+          <div class="formula">(u/v)′ = (u′v − uv′)/v²</div>
         </div>
-        <div class="card"><h3>Sequences & Series</h3>
-          <div class="formula">Arithmetic: Tₙ = a + (n−1)d</div>
-          <div class="formula">Sₙ = n/2 [2a + (n−1)d]</div>
-          <div class="formula">Geometric: Tₙ = arⁿ⁻¹</div>
-          <div class="formula">Sₙ = a(rⁿ − 1)/(r − 1)</div>
-          <div class="formula">S∞ = a/(1 − r) (|r| < 1)</div>
+        <div class="card"><h3>Sequences</h3>
+          <div class="formula">Tₙ = a + (n−1)d</div>
+          <div class="formula">Sₙ = n/2 [2a+(n−1)d]</div>
+          <div class="formula">Tₙ = arⁿ⁻¹</div>
+          <div class="formula">S∞ = a/(1−r)</div>
         </div>
-        <div class="card"><h3>Financial Maths</h3>
-          <div class="formula">Compound: A = P(1 + i)ⁿ</div>
-          <div class="formula">Future Value Annuity: F = x[((1+i)ⁿ − 1)/i]</div>
-          <div class="formula">Present Value Annuity: P = x[(1 − (1+i)⁻ⁿ)/i]</div>
+        <div class="card"><h3>Finance</h3>
+          <div class="formula">A = P(1+i)ⁿ</div>
+          <div class="formula">F = x[((1+i)ⁿ−1)/i]</div>
+          <div class="formula">P = x[(1−(1+i)⁻ⁿ)/i]</div>
         </div>
         <div class="card"><h3>Analytical Geometry</h3>
-          <div class="formula">Distance: d = √[(x₂−x₁)² + (y₂−y₁)²]</div>
-          <div class="formula">Gradient: m = (y₂−y₁)/(x₂−x₁)</div>
-          <div class="formula">Midpoint: M = ((x₁+x₂)/2 , (y₁+y₂)/2)</div>
-        </div>
-        <div class="card"><h3>Probability</h3>
-          <div class="formula">P(A) = favourable / total</div>
-          <div class="formula">Independent: P(A and B) = P(A) × P(B)</div>
-          <div class="formula">Mutually exclusive: P(A or B) = P(A) + P(B)</div>
+          <div class="formula">d = √[(x₂−x₁)²+(y₂−y₁)²]</div>
+          <div class="formula">m = (y₂−y₁)/(x₂−x₁)</div>
         </div>
       </div>
       <div id="physicsFormulas" class="formula-section" style="display:none">
-        <div class="card"><h3>Newton’s Laws & Forces</h3>
-          <div class="formula">F<sub>net</sub> = ma</div>
-          <div class="formula">Weight: W = mg</div>
-        </div>
-        <div class="card"><h3>Momentum & Impulse</h3>
+        <div class="card"><h3>Mechanics</h3>
+          <div class="formula">F_net = ma</div>
           <div class="formula">p = mv</div>
-          <div class="formula">Impulse = FΔt = Δp</div>
-          <div class="formula">m₁u₁ + m₂u₂ = m₁v₁ + m₂v₂</div>
-        </div>
-        <div class="card"><h3>Work, Energy & Power</h3>
+          <div class="formula">Impulse = Δp</div>
           <div class="formula">W = FΔx cosθ</div>
           <div class="formula">Eₖ = ½mv²</div>
           <div class="formula">Eₚ = mgh</div>
-          <div class="formula">P = W/Δt = Fv</div>
         </div>
-        <div class="card"><h3>Electric Circuits</h3>
+        <div class="card"><h3>Electricity</h3>
           <div class="formula">V = IR</div>
-          <div class="formula">Series: R = R₁ + R₂ + ...</div>
-          <div class="formula">Parallel: 1/R = 1/R₁ + 1/R₂ + ...</div>
+          <div class="formula">Series: R = R₁+R₂+…</div>
+          <div class="formula">Parallel: 1/R = 1/R₁+1/R₂+…</div>
           <div class="formula">P = VI = I²R = V²/R</div>
         </div>
         <div class="card"><h3>Waves</h3>
@@ -183,11 +191,11 @@
     <!-- FLASHCARDS -->
     <section id="flashcards" class="section">
       <h1>Flashcards</h1>
-      <p class="subtitle">Tap the card to flip it. Use Next to continue.</p>
+      <p class="subtitle">Tap to flip</p>
       <div class="subject-tabs" id="flashTabs">
-        <button class="active" data-deck="math">Mathematics</button>
-        <button data-deck="physics">Physical Sciences</button>
-        <button data-deck="life">Life Sciences</button>
+        <button class="active" data-deck="math">Maths</button>
+        <button data-deck="physics">Physics</button>
+        <button data-deck="life">Life Sci</button>
         <button data-deck="geo">Geography</button>
       </div>
       <div class="flashcard-container">
@@ -196,7 +204,7 @@
           <div class="flash-back" id="flashBack"></div>
         </div>
         <div class="flash-controls">
-          <button class="btn btn-outline" onclick="prevCard()">← Previous</button>
+          <button class="btn btn-outline" onclick="prevCard()">← Prev</button>
           <span id="flashCounter">1 / 1</span>
           <button class="btn btn-outline" onclick="nextCard()">Next →</button>
         </div>
@@ -206,62 +214,33 @@
     <!-- PROGRESS -->
     <section id="progress" class="section">
       <h1>My Progress</h1>
-      <p class="subtitle">Track what you have completed.</p>
+      <p class="subtitle">Keep track of your work</p>
       <div class="grid" id="progressGrid">
-        <div class="card">
-          <h3>Papers Completed</h3>
-          <div class="score-circle" id="papersDoneCircle">0</div>
-          <p id="papersDoneText">0 of 0 papers marked as done</p>
-        </div>
-        <div class="card">
-          <h3>Quizzes Available</h3>
-          <div class="score-circle" id="quizTotalCircle">0</div>
-          <p>Keep practising to improve</p>
-        </div>
-        <div class="card">
-          <h3>Notes Available</h3>
-          <div class="score-circle" id="notesTotalCircle">0</div>
-          <p>Study the notes and try the quizzes</p>
-        </div>
-      </div>
-      <div class="card" style="margin-top:1.5rem">
-        <h3>Tips to improve</h3>
-        <ul style="margin:0.8rem 0 0 1.2rem">
-          <li>Mark papers as done after working through them</li>
-          <li>Do at least one quiz every day</li>
-          <li>Use the Formula Sheet before tests</li>
-          <li>Revise with Flashcards regularly</li>
-        </ul>
+        <div class="card"><h3>Papers Done</h3><div class="score-circle" id="papersDoneCircle">0</div><p id="papersDoneText">0 of 0</p></div>
+        <div class="card"><h3>Quizzes</h3><div class="score-circle" id="quizTotalCircle">0</div><p>Available</p></div>
+        <div class="card"><h3>Notes</h3><div class="score-circle" id="notesTotalCircle">0</div><p>Available</p></div>
       </div>
     </section>
 
     <!-- CLASSES -->
     <section id="classes" class="section">
       <h1>Live Classes</h1>
-      <p class="subtitle">Join online sessions or contact us to arrange a class.</p>
+      <p class="subtitle">Join or request a session</p>
       <div class="grid">
         <div class="card">
-          <h3>Grade 12 Mathematics</h3>
-          <p>Calculus, Functions, Sequences & Finance revision</p>
-          <p><strong>Status:</strong> Contact us to join the next session</p>
-          <a href="https://wa.me/27793401582?text=Hi%20MMST%2C%20I%20want%20to%20join%20Grade%2012%20Maths%20class" class="btn btn-accent" target="_blank">Join via WhatsApp</a>
+          <h3>Grade 12 Maths</h3>
+          <p>Calculus • Functions • Sequences • Finance</p>
+          <a href="https://wa.me/27793401582?text=Hi%20MMST%2C%20I%20want%20to%20join%20Maths%20class" class="btn btn-accent" target="_blank">Join WhatsApp</a>
         </div>
         <div class="card">
-          <h3>Grade 12 Physical Sciences</h3>
-          <p>Mechanics, Electricity and Waves</p>
-          <p><strong>Status:</strong> Contact us to join the next session</p>
-          <a href="https://wa.me/27793401582?text=Hi%20MMST%2C%20I%20want%20to%20join%20Physical%20Sciences%20class" class="btn btn-accent" target="_blank">Join via WhatsApp</a>
+          <h3>Physical Sciences</h3>
+          <p>Mechanics • Electricity • Waves</p>
+          <a href="https://wa.me/27793401582?text=Hi%20MMST%2C%20I%20want%20to%20join%20Physics%20class" class="btn btn-accent" target="_blank">Join WhatsApp</a>
         </div>
         <div class="card">
           <h3>Life Sciences & Geography</h3>
-          <p>Cell Division, Genetics, Mapwork and Climate</p>
-          <p><strong>Status:</strong> Contact us to arrange a session</p>
-          <a href="https://wa.me/27793401582?text=Hi%20MMST%2C%20I%20want%20to%20join%20Life%20Sciences%20or%20Geography%20class" class="btn btn-accent" target="_blank">Join via WhatsApp</a>
-        </div>
-        <div class="card">
-          <h3>Request a Class</h3>
-          <p>Need help with a specific topic? Message us and we’ll arrange a session.</p>
-          <a href="https://wa.me/27793401582?text=Hi%20MMST%2C%20I%20would%20like%20to%20request%20a%20class" class="btn btn-accent" target="_blank">Request on WhatsApp</a>
+          <p>Cell Division • Genetics • Mapwork</p>
+          <a href="https://wa.me/27793401582?text=Hi%20MMST%2C%20I%20want%20to%20join%20Life%20Sci%20or%20Geo%20class" class="btn btn-accent" target="_blank">Join WhatsApp</a>
         </div>
       </div>
     </section>
@@ -269,18 +248,16 @@
     <!-- ABOUT -->
     <section id="about" class="section">
       <h1>About MMST</h1>
-      <p class="subtitle">Mokopane Maths And Science Tutors</p>
-      <div class="card" style="max-width:700px">
-        <p>MMST helps learners in Grades 8–12 excel in Mathematics, Physical Sciences, Life Sciences and Geography through past papers, detailed notes with worked examples, interactive practice, formula sheets, flashcards and live classes.</p><br>
-        <p><strong>Location:</strong> Mokopane, Limpopo</p>
-        <p><strong>Focus:</strong> Mathematics • Physical Sciences • Life Sciences • Geography</p><br>
-        <a href="https://wa.me/27793401582" class="btn btn-accent" target="_blank">Contact us on WhatsApp</a>
+      <div class="card" style="max-width:600px">
+        <p>Mokopane Maths And Science Tutors helps Grade 8–12 learners excel through past papers, detailed notes, quizzes, formula sheets and live classes.</p>
+        <p style="margin-top:1rem"><strong>Location:</strong> Mokopane, Limpopo</p>
+        <a href="https://wa.me/27793401582" class="btn btn-accent" target="_blank" style="margin-top:1rem">WhatsApp Us</a>
       </div>
     </section>
   </main>
 
   <a href="https://wa.me/27793401582" class="whatsapp-btn" target="_blank">💬</a>
-  <footer>© 2026 MMST – Mokopane Maths And Science Tutors</footer>
+  <footer>© 2026 MMST</footer>
 
   <script src="data.js"></script>
   <script src="app.js"></script>
